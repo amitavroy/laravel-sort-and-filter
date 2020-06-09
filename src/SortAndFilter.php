@@ -10,7 +10,7 @@ trait SortAndFilter
     {
         $query->when($req->has('sortBy'), function ($query) use ($req) {
             if ($this->sortable !== null && count($this->sortable) !== 0) {
-                if (! in_array($req->input('sortBy'), $this->sortable)) {
+                if (!in_array($req->input('sortBy'), $this->sortable)) {
                     $message = config("sort-and-filter.sort-not-allowed");
                     abort(400, $message);
                 }
@@ -28,7 +28,7 @@ trait SortAndFilter
     {
         $query->when(($req->has('filterBy') && $req->has('filterValue')), function ($query) use ($req) {
             if ($this->filterable !== null && count($this->filterable) !== 0) {
-                if (! in_array($req->input('filterBy'), $this->filterable)) {
+                if (!in_array($req->input('filterBy'), $this->filterable)) {
                     $message = config("sort-and-filter.filter-not-allowed");
                     abort(400, $message);
                 }
