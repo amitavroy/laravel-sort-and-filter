@@ -56,7 +56,7 @@ class FilterTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'filterBy' => 'wins'
+            'filterBy' => 'wins',
         ]);
 
         $data = TestModelWithProp::query()
@@ -76,7 +76,7 @@ class FilterTest extends TestCase
         $request = new Request();
         $request->replace([
             'filterBy' => 'wins',
-            'filterValue' => 18
+            'filterValue' => 18,
         ]);
 
         $data = TestModelWithProp::query()
