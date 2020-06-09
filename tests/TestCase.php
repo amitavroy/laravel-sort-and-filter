@@ -2,8 +2,8 @@
 
 namespace Amitav\SortAndFilter\Tests;
 
-use Orchestra\Testbench\TestCase as Orchestra;
 use Amitav\SortAndFilter\SortAndFilterServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
