@@ -34,7 +34,21 @@ trait SortAndFilter
                 }
             }
 
-            $query->where($req->input('filterBy'), 'like', "{$req->input('filterValue')}%");
+            $query->where($req->input('filterBy'), $req->input('filterValue'));
+        });
+    }
+
+    public function scopeSearch($query, Request $req)
+    {
+        $query->when(($req->has('searchBy') && $req->has('searchValue')), function ($query) use ($req) {
+            if ($this->searchable !== null && count($this->searchable) !== 0) {
+                if (! in_array($req->input('searchBy'), $this->searchable)) {
+                    $message = config("sort-and-filter.search-not-allowed");
+                    abort(400, $message);
+                }
+            }
+
+            $query->where($req->input('searchBy'), 'like', "{$req->input('searchValue')}%");
         });
     }
 }

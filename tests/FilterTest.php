@@ -28,7 +28,26 @@ class FilterTest extends TestCase
     }
 
     /** @test */
-    public function it_filters_data_when_filterable_property_is_not_defined()
+    public function it_returns_only_the_exact_value_not_matching_value()
+    {
+        factory(TestModel::class)->create(['country' => 'India']);
+        factory(TestModel::class)->create(['country' => 'Indonesia']);
+
+        $request = new Request();
+        $request->replace([
+            'filterBy' => 'country',
+            'filterValue' => 'India',
+        ]);
+
+        $data = TestModel::query()
+            ->filter($request)
+            ->get();
+
+        $this->assertEquals(1, $data->count());
+    }
+
+    /** @test */
+    public function it_filters_any_data_when_filterable_property_is_not_defined()
     {
         factory(TestModel::class)->create(['age' => 20, 'name' => 'Jhon']);
         factory(TestModel::class)->create(['age' => 40, 'name' => 'Doe']);

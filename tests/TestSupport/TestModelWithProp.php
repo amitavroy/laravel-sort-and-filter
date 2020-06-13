@@ -16,4 +16,6 @@ class TestModelWithProp extends Model
     protected $sortable = ['age'];
 
     protected $filterable = ['wins'];
+
+    protected $searchable = ['country'];
 }
