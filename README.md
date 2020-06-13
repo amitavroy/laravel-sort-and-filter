@@ -1,7 +1,7 @@
 # Laravel Sort and Filter
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/amitavroy/laravel-sort-and-filter.svg?style=flat-square)](https://packagist.org/packages/amitavroy/laravel-sort-and-filter)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/amitavroy/laravel-sort-and-filter/run-tests?label=tests)](https://github.com/amitavroy/laravel-sort-and-filter/actions?query=workflow%3Arun-tests+branch%3Amaster)
+![Tests](https://github.com/amitavroy/laravel-sort-and-filter/workflows/Tests/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/amitavroy/laravel-sort-and-filter.svg?style=flat-square)](https://packagist.org/packages/amitavroy/laravel-sort-and-filter)
 
 This package allows you to sort, filter and even search Eloquent models using the Request object.
