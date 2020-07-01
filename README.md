@@ -26,12 +26,29 @@ php artisan vendor:publish --provider="Amitav\SortAndFilter\SortAndFilterService
 
 ## Usage
 
+This pacakge provides with a Trait which you need to use in any Model that you want to have the ability to sort, filter or search. For example, in the user model, you can add
+
+```
+use SortAndFilter;
+```
+
+Once done, you can add the sort, filter or search function to the Model inside a query and pass the request object directly as show below.
+
 ```php
 User::query()
     ->sort($request)
     ->filter($request)
     ->get();
 ```
+
+With this, you have the ability to pass paramters through URL like this:
+
+```
+http://localhost:8000?sortBy=name&sortOrder=desc
+http://localhost:8000?filterBy=name&filterValue=Amitav
+```
+
+If you want to control which fields can be filtered and which fields can be sorted, then you can create a protected field in your model with name $sortable to control sort fields. And, create a protected field with name $filterable to control which fields can be used to filter.
 
 ## Testing
 
