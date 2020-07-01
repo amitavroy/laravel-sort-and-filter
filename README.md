@@ -1,12 +1,12 @@
 # Laravel Sort and Filter
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/amitavroy/laravel-sort-and-filter.svg?style=flat-square)](https://packagist.org/packages/amitavroy/laravel-sort-and-filter)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/amitavroy/laravel-sort-and-filter/run-tests?label=tests)](https://github.com/amitavroy/laravel-sort-and-filter/actions?query=workflow%3Arun-tests+branch%3Amaster)
+![Tests](https://github.com/amitavroy/laravel-sort-and-filter/workflows/Tests/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/amitavroy/laravel-sort-and-filter.svg?style=flat-square)](https://packagist.org/packages/amitavroy/laravel-sort-and-filter)
 
-This package allows you to sort and filter Eloquent models using Request object or custom array based configuration.
+This package allows you to sort, filter and even search Eloquent models using the Request object.
 
-Don't need to write conditional code inside you controller to handle sort and filter coming from front end through URL (for example from a Javascrpt application)
+No need to write conditional code inside you controller to handle sort, filter or search parameters coming from front end through URL (for example from a Javascrpt application)
 
 Just pass the request object and the sorting and filters should automatically work.
 
@@ -26,13 +26,15 @@ php artisan vendor:publish --provider="Amitav\SortAndFilter\SortAndFilterService
 
 ## Usage
 
-This pacakge provides with a Trait which you need to use in any Model that you want to have the ability to sort, filter or search. For example, in the user model, you can add
+This pacakge provides with a Trait which you need to use in any Model that you want to have the ability to sort, filter or search. For example, in the user model, you need to add
 
 ```
 use SortAndFilter;
 ```
 
 Once done, you can add the sort, filter or search function to the Model inside a query and pass the request object directly as show below.
+
+You can sort and/or filter on any model after adding the trait as shown below:
 
 ```php
 User::query()
@@ -48,7 +50,21 @@ http://localhost:8000?sortBy=name&sortOrder=desc
 http://localhost:8000?filterBy=name&filterValue=Amitav
 ```
 
-If you want to control which fields can be filtered and which fields can be sorted, then you can create a protected field in your model with name $sortable to control sort fields. And, create a protected field with name $filterable to control which fields can be used to filter.
+If you want to control which fields can be filtered and which fields can be sorted, then you can create a protected field in your model with name **\$sortable** to control sort fields. And, create a protected field with name **\$filterable** to control which fields can be used to filter.
+
+You can even search on any model as shown below:
+
+```php
+User::query()
+    ->search($request)
+    ->get();
+```
+
+NOTE: The search is going to be a database query and the package runs a like query. And hence, be careful about the number of string that you allow in validation before you send the request object for search. Internally, the query will be something like:
+
+```mysql
+SELECT * FROM user WHERE name LIKE "amit%";
+```
 
 ## Testing
 
