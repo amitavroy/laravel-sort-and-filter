@@ -34,8 +34,8 @@ class SearchTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'searchBy' => 'country',
-            'searchValue' => 'Ind',
+            config("sort-and-filter.search-by-field") => 'country',
+            config("sort-and-filter.search-value-field") => 'Ind',
         ]);
 
         $data = TestModel::query()
@@ -53,8 +53,8 @@ class SearchTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'searchBy' => 'name',
-            'searchValue' => 'Amit',
+            config("sort-and-filter.search-by-field") => 'name',
+            config("sort-and-filter.search-value-field") => 'Amit',
         ]);
 
         $data = TestModel::query()
@@ -72,7 +72,7 @@ class SearchTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'searchBy' => 'name',
+            config("sort-and-filter.search-by-field") => 'name',
         ]);
 
         $data = TestModel::query()
@@ -92,8 +92,8 @@ class SearchTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'searchBy' => 'country',
-            'searchValue' => 'Ind',
+            config("sort-and-filter.search-by-field") => 'country',
+            config("sort-and-filter.search-value-field") => 'Ind',
         ]);
 
         $data = TestModelWithProp::query()
@@ -115,8 +115,8 @@ class SearchTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'searchBy' => 'name',
-            'searchValue' => 'Ind',
+            config("sort-and-filter.search-by-field") => 'name',
+            config("sort-and-filter.search-value-field") => 'Ind',
         ]);
 
         $data = TestModelWithProp::query()

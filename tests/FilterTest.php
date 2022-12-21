@@ -35,8 +35,8 @@ class FilterTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'filterBy' => 'country',
-            'filterValue' => 'India',
+            config("sort-and-filter.filter-by-field") => 'country',
+            config("sort-and-filter.filter-value-field") => 'India',
         ]);
 
         $data = TestModel::query()
@@ -54,8 +54,8 @@ class FilterTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'filterBy' => 'age',
-            'filterValue' => 20,
+            config("sort-and-filter.filter-by-field") => 'age',
+            config("sort-and-filter.filter-value-field") => 20,
         ]);
 
         $data = TestModel::query()
@@ -75,7 +75,7 @@ class FilterTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'filterBy' => 'wins',
+            config("sort-and-filter.filter-by-field") => 'wins',
         ]);
 
         $data = TestModelWithProp::query()
@@ -94,8 +94,8 @@ class FilterTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'filterBy' => 'wins',
-            'filterValue' => 18,
+            config("sort-and-filter.filter-by-field") => 'wins',
+            config("sort-and-filter.filter-value-field") => 18,
         ]);
 
         $data = TestModelWithProp::query()
@@ -116,8 +116,8 @@ class FilterTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'filterBy' => 'age',
-            'filterValue' => 20,
+            config("sort-and-filter.filter-by-field") => 'age',
+            config("sort-and-filter.filter-value-field") => 20,
         ]);
 
         TestModelWithProp::query()

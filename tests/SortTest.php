@@ -34,8 +34,8 @@ class SortTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'sortBy' => 'age',
-            'sortOrder' => 'desc',
+            config("sort-and-filter.sort-by-field") => 'age',
+            config("sort-and-filter.sort-order-field") => 'desc',
         ]);
 
         $data = TestModel::query()
@@ -55,7 +55,7 @@ class SortTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'sortBy' => 'age',
+            config("sort-and-filter.sort-by-field") => 'age',
         ]);
 
         $data = TestModel::query()
@@ -74,7 +74,7 @@ class SortTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'sortBy' => 'age',
+            config("sort-and-filter.sort-by-field") => 'age',
         ]);
 
         $data = TestModelWithProp::query()
@@ -95,7 +95,7 @@ class SortTest extends TestCase
 
         $request = new Request();
         $request->replace([
-            'sortBy' => 'wins',
+            config("sort-and-filter.sort-by-field") => 'wins',
         ]);
 
         TestModelWithProp::query()
