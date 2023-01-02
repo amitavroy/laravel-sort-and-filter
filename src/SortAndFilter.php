@@ -26,7 +26,7 @@ trait SortAndFilter
 
     public function scopeFilter($query, Request $req)
     {
-        $query->when(($req->has(config("sort-and-filter.filter-by-field")) && $req->has('config("sort-and-filter.filter-value-field")')), function ($query) use ($req) {
+        $query->when(($req->has(config("sort-and-filter.filter-by-field")) && $req->has(config("sort-and-filter.filter-value-field"))), function ($query) use ($req) {
             if ($this->filterable !== null && count($this->filterable) !== 0) {
                 if (! in_array($req->input(config("sort-and-filter.filter-by-field")), $this->filterable)) {
                     $message = config("sort-and-filter.filter-not-allowed");
@@ -34,7 +34,7 @@ trait SortAndFilter
                 }
             }
 
-            $query->where($req->input(config("sort-and-filter.filter-by-field")), $req->input('config("sort-and-filter.filter-value-field")'));
+            $query->where($req->input(config("sort-and-filter.filter-by-field")), $req->input(config("sort-and-filter.filter-value-field")));
         });
     }
 
