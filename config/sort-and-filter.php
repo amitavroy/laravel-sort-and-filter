@@ -9,8 +9,8 @@ return [
     'sort-order-field'      => 'sortOrder',
     'filter-by-field'       => 'filterBy',
     'filter-value-field'    => 'filterValue',
-    'search-by-field'       => 'searchBy'
-    'search-value-field'    => 'searchValue'
+    'search-by-field'       => 'searchBy',
+    'search-value-field'    => 'searchValue',
     /*
      * This message will be displayed as an error when the field
      * for sorting in request doesn't match with the array
